@@ -1,0 +1,14 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.71.11:9092,192.168.71.12:9092,192.168.71.13:9092    # 如果这里写了producer 和 consumer 就不用写了
+    producer:
+      bootstrap-servers: 192.168.71.11:9092,192.168.71.12:9092,192.168.71.13:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer  # 或者自己实现 org.apache.kafka.common.serialization.Serializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      enable-auto-commit: true
+      group-id: applog
+      auto-offset-reset: latest
+      bootstrap-servers: 192.168.71.11:9092,192.168.71.12:9092,192.168.71.13:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 或者自己实现 org.apache.kafka.common.serialization.Deserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
